@@ -1,10 +1,10 @@
 'use client';
-import { useGLTF, MeshTransmissionMaterial} from '@react-three/drei';
+import { useGLTF, MeshTransmissionMaterial, Float} from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 
 const CubeModel = () => {
-    const { nodes } = useGLTF("./medias/Cubo.glb")
+    const { nodes } = useGLTF("/medias/Cubo.glb")
     const model = useRef(null);
   
     useFrame(() => {
@@ -22,9 +22,15 @@ const CubeModel = () => {
     }
 
     return (
-      <mesh ref={model} {...nodes.Cube}>
+      <Float>
+              <group>
+              <mesh ref={model} {...nodes.Cube}>
         <MeshTransmissionMaterial {...materialProps}/>
       </mesh>
+      </group>
+      </Float>
+
+
     )
 }
 
