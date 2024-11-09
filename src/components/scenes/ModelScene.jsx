@@ -1,11 +1,21 @@
 'use client';
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei';
-
+import { useRef } from 'react';
+import { useInView } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
 const ModelScene = ({ children, environmentPreset = 'park', className }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { 
+    once: false, 
+    margin: "-100px",
+    amount: 0.3
+  });
+
   return (
-    <div className={className}> {/* Aplicamos la clase pasada como prop */}
+    <div ref={ref} className={`h-[500px] rounded-lg overflow-hidden ${className}`}>
       <Canvas
         style={{
           width: '100%',
@@ -16,12 +26,16 @@ const ModelScene = ({ children, environmentPreset = 'park', className }) => {
         gl={{ alpha: true }}
       >
         <directionalLight intensity={3} position={[0,3,2]}/>
-        <Environment preset={environmentPreset}  />
-        {children}
-        
+        {isInView && (
+          <Suspense fallback={null}>
+            <Environment preset={environmentPreset} />
+            {children}
+          </Suspense>
+        )}
+     
       </Canvas>
     </div>
   )
 }
 
-export default ModelScene
+export default ModelScene;

@@ -1,22 +1,28 @@
 'use client';
+import dynamic from 'next/dynamic'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei';
-import CubeInteractive from '@/components/models/CubeInteractive';
 import { useRef, useEffect } from 'react';
 import { useInView } from 'framer-motion';
 import { useControls } from 'leva';
+import { Suspense } from 'react';
+
+// Importación dinámica del modelo
+const DynamicCubeInteractive = dynamic(() => import('@/components/models/CubeInteractive'), {
+  loading: () => null,
+  ssr: false
+})
 
 const CubeScene = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { 
     once: false, 
     margin: "-100px",
-    amount: 0.3 // Controla qué porcentaje de la sección debe ser visible
+    amount: 0.3
   });
 
-  // Controlar la visibilidad del panel de Leva
   useEffect(() => {
-    const levaPanel = document.querySelector('.leva-c-kWgxhW'); // Selector del panel de Leva
+    const levaPanel = document.querySelector('.leva-c-kWgxhW');
     if (levaPanel) {
       if (isInView) {
         levaPanel.style.display = 'block';
@@ -38,7 +44,9 @@ const CubeScene = () => {
         }}
       >
         <directionalLight intensity={3} position={[0, 3, 2]} />
-        {isInView && <CubeInteractive />}
+        <Suspense fallback={null}>
+          {isInView && <DynamicCubeInteractive />}
+        </Suspense>
         <OrbitControls />
       </Canvas>
     </div>

@@ -12,7 +12,7 @@ export default function Home() {
       <Navbar />
       <Container className="pt-16">
         <Hero />
-        <CubeScene /> {/* Añade el cubo interactivo aquí */}
+        <CubeScene /> 
         <Introduction />
         <ModelsShowcase />
         <About />
