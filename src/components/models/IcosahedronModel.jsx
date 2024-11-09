@@ -17,8 +17,7 @@ const IcosahedronModel = () => {
     chromaticAberration: 0.80,
     backside: true,
   }
-  console.log("qlq")
-  console.log("los nodeees", nodes)
+
   return (
     <Float
       speed={10} // Velocidad de animación
