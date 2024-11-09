@@ -1,9 +1,7 @@
-// src/app/layout.js
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { Orbitron, Poppins } from 'next/font/google';
+import Script from 'next/script';
 import "./globals.css";
-import { GA_TRACKING_ID } from '@/lib/ga';
-import AnalyticsTest from '@/components/ui/AnalyticsTest'
+import { GA_TRACKING_ID } from '@/lib/gtag';
 
 const orbitron = Orbitron({ 
   subsets: ['latin'],
@@ -22,14 +20,28 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  console.log('GA ID:', GA_TRACKING_ID) // Cambiado para usar la constante importada
-  
   return (
     <html lang="en" className={`${orbitron.variable} ${poppins.variable}`}>
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}');
+            `,
+          }}
+        />
+      </head>
       <body>
-      <AnalyticsTest />
         {children}
-        <GoogleAnalytics gaId="G-CR7XCYQN0X" />
       </body>
     </html>
   );
