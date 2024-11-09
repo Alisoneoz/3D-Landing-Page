@@ -1,8 +1,11 @@
 'use client';
 import { useGLTF, MeshTransmissionMaterial, Float, Text } from '@react-three/drei';
 import { useRef } from 'react';
+import { useThree } from '@react-three/fiber';
+
 
 const IcosahedronModel = () => {
+  const { viewport } = useThree();
   const { nodes } = useGLTF("/medias/Icosphere.glb")
   const model = useRef(null);
 
@@ -15,7 +18,7 @@ const IcosahedronModel = () => {
     backside: true,
   }
   console.log("qlq")
-  console.log("los nodeees",nodes)
+  console.log("los nodeees", nodes)
   return (
     <Float
       speed={10} // Velocidad de animación
@@ -23,14 +26,15 @@ const IcosahedronModel = () => {
       floatIntensity={3} // Intensidad del floating
       floatingRange={[-0.1, 0.1]} // Rango del movimiento vertical
     >
-     
-      <group>                         <Text  position={[0, 0, -1]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
-                hello world!
-            </Text>       
-        <mesh ref={model} {...nodes.Icosphere}>
-        <MeshTransmissionMaterial {...materialProps} />
-      </mesh></group>
 
+      <group scale={viewport.width / 5}>
+        <Text position={[0, 0, -1]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
+         *
+        </Text>
+        <mesh ref={model} {...nodes.Icosphere}>
+          <MeshTransmissionMaterial {...materialProps} />
+        </mesh>
+      </group>
     </Float>
   )
 }

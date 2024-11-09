@@ -8,8 +8,8 @@ const DodecahedronModel = () => {
     const model = useRef(null);
   
     useFrame(() => {
-        model.current.rotation.x += 0.003
-        model.current.rotation.y -= 0.01
+     
+        model.current.rotation.y -= 0.07
     })
 
     const materialProps = {

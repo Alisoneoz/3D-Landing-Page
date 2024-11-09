@@ -1,7 +1,7 @@
 'use client';
 import { motion } from "framer-motion";
-import IcosahedronModel from "../models/IcosahedronModel";
-import ModelScene from "../scenes/ModelScene";
+import IcosahedronModel from "@/components/models/IcosahedronModel";
+import ModelScene from "@/components/scenes/ModelScene";
 
 const Hero = () => {
   return (

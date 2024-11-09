@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        dohyeon: ['var(--font-orbitron)'],
+        poppins: ['var(--font-poppins)'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

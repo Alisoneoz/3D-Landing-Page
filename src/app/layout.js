@@ -1,10 +1,10 @@
-import { Do_Hyeon, Poppins } from 'next/font/google';
+import { Orbitron, Poppins } from 'next/font/google';
 import "./globals.css";
 
-const doHyeon = Do_Hyeon({ 
-  weight: '400',
+
+const orbitron = Orbitron({ 
   subsets: ['latin'],
-  variable: '--font-dohyeon'
+  variable: '--font-orbitron'
 })
 
 const poppins = Poppins({ 
@@ -20,8 +20,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${doHyeon.variable} ${poppins.variable}`}>
-      <body className="font-poppins">
+    <html lang="en" className={`${orbitron.variable} ${poppins.variable}`}>
+      <body>
         {children}
       </body>
     </html>
