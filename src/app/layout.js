@@ -1,7 +1,6 @@
 import { Orbitron, Poppins } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
-import { GA_TRACKING_ID } from '@/lib/gtag';
 
 const orbitron = Orbitron({ 
   subsets: ['latin'],
@@ -23,22 +22,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${orbitron.variable} ${poppins.variable}`}>
       <head>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        {/* Google tag (gtag.js) */}
+        <Script 
+          async 
+          src="https://www.googletagmanager.com/gtag/js?id=G-CR7XCYQN0X"
         />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_TRACKING_ID}');
-            `,
-          }}
-        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CR7XCYQN0X');
+          `}
+        </Script>
       </head>
       <body>
         {children}
