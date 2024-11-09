@@ -4,7 +4,7 @@ import ModelsShowcase from '@/components/sections/ModelsShowcase'
 import About from '@/components/sections/About'
 import Navbar from '@/components/ui/navbar'
 import Container from '@/components/ui/container'
-import CubeScene from '@/components/scenes/CubeScene'
+import InteractiveCubeSection from '@/components/sections/InteractiveCubeSection'
 
 export default function Home() {
   return (
@@ -12,7 +12,11 @@ export default function Home() {
       <Navbar />
       <Container className="pt-16">
         <Hero />
-        <CubeScene /> 
+  
+        <InteractiveCubeSection />
+
+
+        
         <Introduction />
         <ModelsShowcase />
         <About />

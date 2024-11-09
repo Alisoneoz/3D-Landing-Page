@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        dohyeon: ['var(--font-orbitron)'],
+        orbitron: ['var(--font-orbitron)'],
         poppins: ['var(--font-poppins)'],
       },
       colors: {

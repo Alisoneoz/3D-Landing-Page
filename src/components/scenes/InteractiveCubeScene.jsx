@@ -13,7 +13,7 @@ const DynamicCubeInteractive = dynamic(() => import('@/components/models/CubeInt
   ssr: false
 })
 
-const CubeScene = () => {
+const InteractiveCubeScene = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { 
     once: false, 
@@ -47,10 +47,16 @@ const CubeScene = () => {
         <Suspense fallback={null}>
           {isInView && <DynamicCubeInteractive />}
         </Suspense>
-        <OrbitControls />
+        <OrbitControls 
+        
+        minPolarAngle={Math.PI / 4} // 45 grados desde arriba
+  maxPolarAngle={Math.PI / 2} // 90 grados (vista horizontal)
+  enableZoom={false} // Sin zoom
+  enablePan={true} // Sin paneo
+        />
       </Canvas>
     </div>
   )
 }
 
-export default CubeScene;
+export default InteractiveCubeScene;

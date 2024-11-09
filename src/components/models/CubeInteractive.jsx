@@ -13,29 +13,30 @@ const CubeInteractive = () => {
     const groupRef = useRef(null);
   
     const materialProps = useControls('Material', {
-        thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
+        thickness: { value: 3.0, min: 0, max: 3, step: 0.05 },
         roughness: { value: 0, min: 0, max: 1, step: 0.1 },
         transmission: {value: 1, min: 0, max: 1, step: 0.1},
-        ior: { value: 1.2, min: 0, max: 3, step: 0.1 },
-        chromaticAberration: { value: 0.02, min: 0, max: 1},
+        ior: { value: 0, min: 0, max: 3, step: 0.1 },
+        chromaticAberration: { value: 1, min: 0, max: 1},
         backside: { value: true},
-        collapsed:true,
-        order:0
+        order:1
     })
 
     const moveProps = useControls('Movement', {
         rotationSpeedX: { value: 0.007, min: 0, max: 0.02, step: 0.001 },
         rotationSpeedY: { value: 0.01, min: 0, max: 0.02, step: 0.001 },
         swaySpeed: { value: 1, min: 0, max: 5, step: 0.1 },
-        swayAmplitude: { value: 1, min: -3, max: 3, step: 0.1 }
+        swayAmplitude: { value: 1, min: -3, max: 3, step: 0.1 },
+        order:2
     })
 
     const envProps = useControls('Environment', {
         preset: {
-            value: 'sunset',
+            value: 'park',
             options: ['sunset', 'dawn', 'night', 'warehouse', 'forest', 'apartment', 'studio', 'city', 'park', 'lobby'],
         },
         intensity: { value: 1, min: 0, max: 5, step: 0.1 },
+        order:0
     })
 
     useFrame(({ clock }) => {
@@ -51,18 +52,8 @@ const CubeInteractive = () => {
 
     return (
         <group>
-            <Text 
-                font={'/fonts/Orbitron-Regular.ttf'}
-                position={[0, 0, -1]} 
-                fontSize={0.5} 
-                color="white" 
-                anchorX="center" 
-                anchorY="middle"
-            > 
-                Interactive Cube
-            </Text>
-            
-            <group ref={groupRef}>
+
+            <group ref={groupRef} scale={viewport.width / 5}>
                 <Float
                     speed={10}
                     rotationIntensity={0.5}
@@ -78,6 +69,7 @@ const CubeInteractive = () => {
             <Environment 
                 preset={envProps.preset}
                 intensity={envProps.intensity}
+                background="true"
             />
         </group>
     )
