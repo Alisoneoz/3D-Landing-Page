@@ -1,6 +1,8 @@
 import { Orbitron, Poppins } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
+import Footer from '@/components/ui/footer';
+import Navbar from '@/components/ui/navbar';
 
 const orbitron = Orbitron({ 
   subsets: ['latin'],
@@ -37,7 +39,9 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body>
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

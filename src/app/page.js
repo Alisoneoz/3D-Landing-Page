@@ -1,25 +1,28 @@
-import Hero from '@/components/sections/Hero'
+'use client';
 import Introduction from '@/components/sections/Introduction'
 import ModelsShowcase from '@/components/sections/ModelsShowcase'
-import About from '@/components/sections/About'
-import Navbar from '@/components/ui/navbar'
 import Container from '@/components/ui/container'
 import InteractiveCubeSection from '@/components/sections/InteractiveCubeSection'
+import SecondSection from '@/components/sections/SecondSection'
+import Hero from '@/components/sections/Hero';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
+      
       <Container className="pt-16">
-        <Hero />
+<Hero />
+
+
+        <SecondSection/>
   
         <InteractiveCubeSection />
 
 
-        
+
         <Introduction />
         <ModelsShowcase />
-        <About />
+   
       </Container>
     </main>
   )
