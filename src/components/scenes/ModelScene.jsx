@@ -16,7 +16,7 @@ const ModelScene = ({ children, environmentPreset = 'park', className }) => {
         gl={{ alpha: true }}
       >
         <directionalLight intensity={3} position={[0,3,2]}/>
-        <Environment preset={environmentPreset}/>
+        <Environment preset={environmentPreset} />
         {children}
         <OrbitControls />
       </Canvas>

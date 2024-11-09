@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 
 const DodecahedronModel = () => {
-    const { nodes } = useGLTF("/medias/dodecahedron.glb")
+    const { nodes } = useGLTF("/medias/sphere7-13.glb")
     const model = useRef(null);
   
     useFrame(() => {
@@ -22,11 +22,11 @@ const DodecahedronModel = () => {
     }
 
     return (
-      <mesh ref={model} {...nodes.Dodecahedron}>
+      <mesh ref={model} {...nodes.Sphere}>
         <MeshTransmissionMaterial {...materialProps}/>
       </mesh>
     )
 }
 
 export default DodecahedronModel;
-useGLTF.preload("/medias/dodecahedron.glb")
+useGLTF.preload("/medias/sphere7-13.glb")

@@ -1,9 +1,9 @@
 'use client';
-import { useGLTF, MeshTransmissionMaterial, Float } from '@react-three/drei';
+import { useGLTF, MeshTransmissionMaterial, Float, Text } from '@react-three/drei';
 import { useRef } from 'react';
 
 const IcosahedronModel = () => {
-  const { nodes } = useGLTF("/medias/poligono.glb")
+  const { nodes } = useGLTF("/medias/Icosphere.glb")
   const model = useRef(null);
 
   const materialProps = {
@@ -18,13 +18,16 @@ const IcosahedronModel = () => {
   console.log("los nodeees",nodes)
   return (
     <Float
-      speed={2} // Velocidad de animación
-      rotationIntensity={2} // Intensidad de rotación
+      speed={10} // Velocidad de animación
+      rotationIntensity={0.5} // Intensidad de rotación
       floatIntensity={3} // Intensidad del floating
-      floatingRange={[-0.3, 0.3]} // Rango del movimiento vertical
+      floatingRange={[-0.1, 0.1]} // Rango del movimiento vertical
     >
-      <group>       
-        <mesh ref={model} {...nodes.Icosahedron}>
+     
+      <group>                         <Text  position={[0, 0, -1]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
+                hello world!
+            </Text>       
+        <mesh ref={model} {...nodes.Icosphere}>
         <MeshTransmissionMaterial {...materialProps} />
       </mesh></group>
 
@@ -34,4 +37,4 @@ const IcosahedronModel = () => {
 
 export default IcosahedronModel;
 
-useGLTF.preload("/medias/poligono.glb")
+useGLTF.preload("/medias/Icosphere.glb")

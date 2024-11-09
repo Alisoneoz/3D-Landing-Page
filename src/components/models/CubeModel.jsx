@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 
 const CubeModel = () => {
-    const { nodes } = useGLTF("/medias/Cubo.glb")
+    const { nodes } = useGLTF("/medias/cube.glb")  // Cambiamos la ruta para que sea absoluta
     const model = useRef(null);
   
     useFrame(() => {
@@ -22,17 +22,19 @@ const CubeModel = () => {
     }
 
     return (
-      <Float>
-              <group>
-              <mesh ref={model} {...nodes.Cube}>
-        <MeshTransmissionMaterial {...materialProps}/>
-      </mesh>
-      </group>
-      </Float>
+        <Float
+            speed={1.5} // Velocidad de la animación
+            rotationIntensity={1} // Intensidad de la rotación
+            floatIntensity={2} // Intensidad del floating
+        >
 
-
+            <mesh ref={model} {...nodes.Cube}>
+                <MeshTransmissionMaterial {...materialProps}/>
+            </mesh>
+        </Float>
     )
 }
 
 export default CubeModel;
-useGLTF.preload("/medias/Cubo.glb")
+
+useGLTF.preload("/medias/cube.glb")
