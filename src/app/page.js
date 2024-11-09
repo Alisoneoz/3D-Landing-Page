@@ -8,21 +8,13 @@ import Hero from '@/components/sections/Hero';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      
-      <Container className="pt-16">
-<Hero />
-
-
+    <main>
+      <Hero /> {/* Sin Container */}
+      <Container>
         <SecondSection/>
-  
         <InteractiveCubeSection />
-
-
-
         <Introduction />
         <ModelsShowcase />
-   
       </Container>
     </main>
   )

@@ -1,11 +1,9 @@
 'use client';
-import { useGLTF, MeshTransmissionMaterial, Text, Float, useFont } from '@react-three/drei';
+import { useGLTF, MeshTransmissionMaterial, Text, Float } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import { useThree } from '@react-three/fiber';
-import { useControls, folder } from 'leva';
 import { Environment } from '@react-three/drei';
-
 
 const Discoteca = () => {
     const { nodes } = useGLTF("/medias/discoteca.glb")
@@ -13,74 +11,58 @@ const Discoteca = () => {
     const model = useRef(null);
     const groupRef = useRef(null);
   
-  
-    const materialProps = useControls('Material', {
-        thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
-        roughness: { value: 0, min: 0, max: 1, step: 0.1 },
-        transmission: {value: 1, min: 0, max: 1, step: 0.1},
-        ior: { value: 1.2, min: 0, max: 3, step: 0.1 },
-        chromaticAberration: { value: 0.02, min: 0, max: 1},
-        backside: { value: true},
-    })
-
-    const moveProps = useControls('Movement', {
-        rotationSpeedX: { value: 0.007, min: 0, max: 0.02, step: 0.001 },
-        rotationSpeedY: { value: 0.01, min: 0, max: 0.02, step: 0.001 },
-        swaySpeed: { value: 1, min: 0, max: 5, step: 0.1 },
-        swayAmplitude: { value: 1, min: -3, max: 3, step: 0.1 }
-    })
-
-    const environmentProps = useControls('Environment', {
-        preset: {
-            value: 'sunset',
-            options: ['sunset', 'dawn', 'night', 'warehouse', 'forest', 'apartment', 'studio', 'city', 'park', 'lobby'],
-        },
-        intensity: { value: 1, min: 0, max: 5, step: 0.1 },
-    })
+    // Valores fijos para el material
+    const materialProps = {
+        thickness: 0.2,
+        roughness: 0,
+        transmission: 1,
+        ior: 1.2,
+        chromaticAberration: 0.02,
+        backside: true,
+    }
 
     useFrame(({ clock }) => {
         if (model.current) {
-            model.current.rotation.x += moveProps.rotationSpeedX
-            model.current.rotation.y += moveProps.rotationSpeedY
+            model.current.rotation.x += 0.01
+            model.current.rotation.y += 0.01
         }
         
         if (groupRef.current) {
-            groupRef.current.position.x = Math.sin(clock.getElapsedTime() * moveProps.swaySpeed) * moveProps.swayAmplitude
+            groupRef.current.position.x = Math.sin(clock.getElapsedTime() * 0.4) * 2
         }
     })
 
     return (
-        <group>
-            <Text 
-                 font={'/fonts/Orbitron-Regular.ttf'}
-                position={[0, 0, -1]} 
-                fontSize={0.5} 
-                color="white" 
-                anchorX="center" 
-                anchorY="middle"
-            > 
-                Alison Estephany
-            </Text>
-            
-            <group ref={groupRef}>
-                <Float
-                    speed={10}
-                    rotationIntensity={0.5}
-                    floatIntensity={2}
-                    floatingRange={[-0.1, 0.1]}
-                >     
-                    <mesh ref={model} {...nodes.discoteca}>
-                        <MeshTransmissionMaterial {...materialProps}/>
-                    </mesh>
-                </Float>
-            </group>
-
-            <Environment 
-                preset={environmentProps.preset}
-                intensity={environmentProps.intensity}
-               
-            />
+        <group scale={viewport.width / 10}> {/* Ajustado el scale */}
+        <Text 
+            font={'/fonts/Orbitron-Regular.ttf'}
+            position={[0, 0, 0]} 
+            fontSize={0.7} 
+            color="white" 
+            anchorX="center" 
+            anchorY="middle"
+        > 
+            Alison Estephany
+        </Text>
+        
+        <group ref={groupRef}>
+            <Float
+                speed={4}
+                rotationIntensity={0.5}
+                floatIntensity={1}
+                floatingRange={[-0.1, 0.1]}
+            >     
+                <mesh ref={model} {...nodes.discoteca}>
+                    <MeshTransmissionMaterial {...materialProps}/>
+                </mesh>
+            </Float>
         </group>
+
+        <Environment 
+            preset="sunset"
+            intensity={1.5}
+        />
+    </group>
     )
 }
 
