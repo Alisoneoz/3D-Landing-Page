@@ -1,18 +1,16 @@
 'use client';
-import { useGLTF, MeshTransmissionMaterial, Text, Float, useFont } from '@react-three/drei';
+import { useGLTF, MeshTransmissionMaterial, Text, Float } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import { useThree } from '@react-three/fiber';
 import { useControls, folder } from 'leva';
 import { Environment } from '@react-three/drei';
 
-
-const Discoteca = () => {
-    const { nodes } = useGLTF("/medias/discoteca.glb")
+const CubeInteractive = () => {
+    const { nodes } = useGLTF("/medias/cube.glb")
     const { viewport } = useThree();
     const model = useRef(null);
     const groupRef = useRef(null);
-  
   
     const materialProps = useControls('Material', {
         thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
@@ -21,6 +19,8 @@ const Discoteca = () => {
         ior: { value: 1.2, min: 0, max: 3, step: 0.1 },
         chromaticAberration: { value: 0.02, min: 0, max: 1},
         backside: { value: true},
+        collapsed:true,
+        order:0
     })
 
     const moveProps = useControls('Movement', {
@@ -30,7 +30,7 @@ const Discoteca = () => {
         swayAmplitude: { value: 1, min: -3, max: 3, step: 0.1 }
     })
 
-    const environmentProps = useControls('Environment', {
+    const envProps = useControls('Environment', {
         preset: {
             value: 'sunset',
             options: ['sunset', 'dawn', 'night', 'warehouse', 'forest', 'apartment', 'studio', 'city', 'park', 'lobby'],
@@ -52,14 +52,14 @@ const Discoteca = () => {
     return (
         <group>
             <Text 
-                 font={'/fonts/Orbitron-Regular.ttf'}
+                font={'/fonts/Orbitron-Regular.ttf'}
                 position={[0, 0, -1]} 
                 fontSize={0.5} 
                 color="white" 
                 anchorX="center" 
                 anchorY="middle"
             > 
-                Alison Estephany
+                Interactive Cube
             </Text>
             
             <group ref={groupRef}>
@@ -69,21 +69,20 @@ const Discoteca = () => {
                     floatIntensity={2}
                     floatingRange={[-0.1, 0.1]}
                 >     
-                    <mesh ref={model} {...nodes.discoteca}>
+                    <mesh ref={model} {...nodes.Cube}>
                         <MeshTransmissionMaterial {...materialProps}/>
                     </mesh>
                 </Float>
             </group>
 
             <Environment 
-                preset={environmentProps.preset}
-                intensity={environmentProps.intensity}
-               
+                preset={envProps.preset}
+                intensity={envProps.intensity}
             />
         </group>
     )
 }
 
-export default Discoteca;
+export default CubeInteractive;
 
-useGLTF.preload("/medias/discoteca.glb")
+useGLTF.preload("/medias/cube.glb")

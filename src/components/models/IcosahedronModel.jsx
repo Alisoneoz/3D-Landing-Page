@@ -28,8 +28,8 @@ const IcosahedronModel = () => {
     >
 
       <group scale={viewport.width / 5}>
-        <Text position={[0, 0, -1]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
-         *
+        <Text position={[0, 0, -1]} fontSize={0.3} color="white" anchorX="center" anchorY="middle">
+        🟡
         </Text>
         <mesh ref={model} {...nodes.Icosphere}>
           <MeshTransmissionMaterial {...materialProps} />
