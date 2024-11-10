@@ -5,6 +5,9 @@ import Container from '@/components/ui/container'
 import InteractiveCubeSection from '@/components/sections/InteractiveCubeSection'
 import SecondSection from '@/components/sections/SecondSection'
 import Hero from '@/components/sections/Hero';
+import JourneySection from '@/components/sections/JourneySection';
+import CreditsSection from '@/components/sections/CreditsSection';
+import GalleryFinale from '@/components/sections/GalleryFinale';
 
 export default function Home() {
   return (
@@ -13,8 +16,9 @@ export default function Home() {
       <Container>
         <SecondSection/>
         <InteractiveCubeSection />
-        <Introduction />
-        <ModelsShowcase />
+
+
+      
       </Container>
     </main>
   )
