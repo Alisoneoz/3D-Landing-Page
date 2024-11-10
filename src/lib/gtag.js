@@ -1,16 +1,13 @@
 export const GA_TRACKING_ID = 'G-CR7XCYQN0X'
 
-// Analytics helpers
 export const pageview = (url) => {
-  window.gtag('config', GA_TRACKING_ID, {
-    page_path: url,
-  })
-}
-
-export const event = ({ action, category, label, value }) => {
-  window.gtag('event', action, {
-    event_category: category,
-    event_label: label,
-    value: value,
-  })
-}
+  try {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', GA_TRACKING_ID, {
+        page_path: url,
+      });
+    }
+  } catch (error) {
+    console.log('Analytics pageview error:', error);
+  }
+};
