@@ -18,10 +18,7 @@ const Hero = () => {
       >
         <directionalLight intensity={3} position={[0, 3, 2]} />
         <Discoteca />
-        <OrbitControls 
-          enableZoom={false}
-          enablePan={false}
-        />
+
       </Canvas>
 
       {/* Overlay con mejor z-index y posicionamiento */}
