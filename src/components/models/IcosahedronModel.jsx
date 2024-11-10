@@ -26,7 +26,7 @@ const IcosahedronModel = () => {
       floatingRange={[-0.1, 0.1]} // Rango del movimiento vertical
     >
 
-      <group scale={viewport.width / 5}>
+      <group scale={viewport.width / 4}>
         <Text position={[0, 0, -1]} fontSize={0.3} color="white" anchorX="center" anchorY="middle">
         🟡
         </Text>

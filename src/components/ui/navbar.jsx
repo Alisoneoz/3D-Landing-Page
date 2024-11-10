@@ -28,11 +28,11 @@ const Navbar = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fixed top-0 left-0 right-0 bg-[#030014]/80 backdrop-blur-sm z-50">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <Link href="/" className="font-orbitron text-xl text-white hover:text-purple-400 transition-colors">
-            Three.js Magic
+           Playing with ThreeJS
           </Link>
 
           {/* Navigation Links */}

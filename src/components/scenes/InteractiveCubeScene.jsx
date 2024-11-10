@@ -17,7 +17,7 @@ const InteractiveCubeScene = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { 
     once: false, 
-    margin: "-100px",
+    margin: "-10px",
     amount: 0.3
   });
 

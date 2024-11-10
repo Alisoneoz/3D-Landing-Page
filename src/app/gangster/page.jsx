@@ -13,11 +13,11 @@ const Hero = () => {
         className="py-10 md:py-20 lg:py-40 gap-6 mb-16 w-2/5"
       >
         <h1 className="text-5xl font-bold text-white text-center mb-12">
-          Exploring Three.js Magic
+          Playing with Three.js
         </h1>
         
         <p className="text-xl text-neutral-400 text-center">
-          A journey through 3D web graphics, showcasing the power and beauty of Three.js
+          Exploring, Learning and Playing
         </p>
       </motion.div>
     

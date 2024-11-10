@@ -2,7 +2,6 @@
 import {  useGLTF, MeshTransmissionMaterial, Html} from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import React, { useRef } from 'react';
-import { useControls } from 'leva';
 
 const Model = () => {
     const { nodes } = useGLTF("./medias/Cubo.glb")

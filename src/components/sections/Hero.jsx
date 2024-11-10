@@ -29,7 +29,7 @@ const Hero = () => {
       
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500">
-          Three.js Magic
+          Playing with ThreeJS
         </h1>
         <p className="mt-6 text-lg md:text-xl text-gray-300">
           Exploring the boundless possibilities of 3D web graphics

@@ -23,10 +23,10 @@ const CubeInteractive = () => {
     })
 
     const moveProps = useControls('Movement', {
-        rotationSpeedX: { value: 0.007, min: 0, max: 0.02, step: 0.001 },
-        rotationSpeedY: { value: 0.01, min: 0, max: 0.02, step: 0.001 },
-        swaySpeed: { value: 1, min: 0, max: 5, step: 0.1 },
-        swayAmplitude: { value: 1, min: -3, max: 3, step: 0.1 },
+        rotationSpeedX: { value: 0.0, min: 0, max: 0.02, step: 0.001 },
+        rotationSpeedY: { value: 0.0, min: 0, max: 0.02, step: 0.001 },
+        swaySpeed: { value: 0.3, min: 0, max: 5, step: 0.1 },
+        swayAmplitude: { value: -1, min: -3, max: 3, step: 0.1 },
         order:2
     })
 
@@ -53,7 +53,7 @@ const CubeInteractive = () => {
     return (
         <group>
 
-            <group ref={groupRef} scale={viewport.width / 5}>
+            <group ref={groupRef} scale={viewport.width / 6}>
                 <Float
                     speed={10}
                     rotationIntensity={0.5}

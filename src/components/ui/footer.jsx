@@ -17,10 +17,10 @@ const Footer = () => {
           {/* Branding */}
           <div className="space-y-4">
             <h4 className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500">
-              Three.js Magic
+              Playing with ThreeJS
             </h4>
             <p className="text-sm text-gray-400 max-w-md">
-              Exploring the boundless possibilities of 3D web graphics with Three.js and React
+              The best way to learn is building projects
             </p>
           </div>
 
@@ -87,7 +87,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-center text-sm text-gray-400">
-            © {currentYear} Three.js Magic. Built with 
+            © {currentYear} Playing with ThreeJS. Built with 
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500 mx-1">
               ❤️
             </span> 

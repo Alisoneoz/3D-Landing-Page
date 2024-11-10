@@ -37,12 +37,12 @@ const Discoteca = () => {
         <Text 
             font={'/fonts/Orbitron-Regular.ttf'}
             position={[0, 0, 0]} 
-            fontSize={0.7} 
+            fontSize={0.5} 
             color="white" 
             anchorX="center" 
             anchorY="middle"
         > 
-            Alison Estephany
+            Playing with ThreeJS
         </Text>
         
         <group ref={groupRef}>
@@ -50,7 +50,7 @@ const Discoteca = () => {
                 speed={4}
                 rotationIntensity={0.5}
                 floatIntensity={1}
-                floatingRange={[-0.1, 0.1]}
+                floatingRange={[-0.3, 0.3]}
             >     
                 <mesh ref={model} {...nodes.discoteca}>
                     <MeshTransmissionMaterial {...materialProps}/>

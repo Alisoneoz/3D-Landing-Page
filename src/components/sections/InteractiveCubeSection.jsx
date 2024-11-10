@@ -13,7 +13,7 @@ const InteractiveCubeSection = () => {
                 transition={{ duration: 0.5 }}
                 className='text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500'
             >
-                Let&apos;s Play with the cube!
+                Let&apos;s Play with a cube!
             </motion.h2>
 
             <motion.div 
