@@ -7,6 +7,7 @@ import Hero from '@/components/sections/Hero';
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { pageview } from '@/lib/gtag'
+import Navbar from '@/components/ui/navbar'
 
 export default function Home() {
   const pathname = usePathname()
@@ -17,10 +18,17 @@ export default function Home() {
 
   return (
     <main>
-      <Hero />
+      <Navbar />
+      <section id="hero">
+        <Hero />
+      </section>
       <Container>
-        <SecondSection/>
-        <InteractiveCubeSection />
+        <section id="tech-stack">
+          <SecondSection/>
+        </section>
+        <section id="interactive">
+          <InteractiveCubeSection />
+        </section>
       </Container>
     </main>
   )

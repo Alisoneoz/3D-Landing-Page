@@ -6,11 +6,26 @@ import { motion } from 'framer-motion'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10
       setScrolled(isScrolled)
+
+      // Detectar qué sección está en vista
+      const sections = ['hero', 'second', 'interactive']
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          // Si la sección está en el viewport
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -32,14 +47,14 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <Link href="/" className="font-orbitron text-xl text-white hover:text-purple-400 transition-colors">
-           Playing with ThreeJS
+            Playing with ThreeJS
           </Link>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#about">About</NavLink>
-            <NavLink href="#models">Models</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
+            <NavLink href="#hero" isActive={activeSection === 'hero'}>Home</NavLink>
+            <NavLink href="#tech-stack" isActive={activeSection === 'second'}>Tech stack</NavLink>
+            <NavLink href="#interactive" isActive={activeSection === 'interactive'}>Play with the Cube</NavLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -56,13 +71,23 @@ const Navbar = () => {
   )
 }
 
-const NavLink = ({ href, children }) => (
+const NavLink = ({ href, children, isActive }) => (
   <Link 
     href={href}
-    className="text-sm font-poppins text-gray-300 hover:text-white transition-colors duration-200 relative group"
+    className={`text-sm font-poppins ${
+      isActive 
+        ? 'text-white' 
+        : 'text-gray-300 hover:text-white'
+    } transition-colors duration-200 relative group`}
   >
     {children}
-    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple-500 transition-all duration-200 group-hover:w-full"></span>
+    <span 
+      className={`absolute -bottom-1 left-0 h-[2px] bg-purple-500 transition-all duration-200 ${
+        isActive 
+          ? 'w-full' 
+          : 'w-0 group-hover:w-full'
+      }`}
+    />
   </Link>
 )
 

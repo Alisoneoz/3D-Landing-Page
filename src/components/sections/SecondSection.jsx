@@ -34,7 +34,7 @@ const SecondSection = () => {
           </h2>
           
           <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-lg">
-            Built with a powerful combination of cutting-edge tools and frameworks to deliver an immersive 3D experience.
+           Exploring different libraries and tools to create 3D scenes.
           </p>
         </div>
 
