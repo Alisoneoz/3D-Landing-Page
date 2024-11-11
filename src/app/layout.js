@@ -16,8 +16,8 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "Three.js Showcase",
-  description: "Exploring 3D graphics with Three.js and React",
+  title: "Practicing Three.js",
+  description: "Exploring 3D graphics with ThreeJS and NextJS",
 };
 
 export default function RootLayout({ children }) {
