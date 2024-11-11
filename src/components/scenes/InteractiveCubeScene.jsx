@@ -35,8 +35,9 @@ const InteractiveCubeScene = () => {
   return (
     <div 
       ref={ref} 
-      className="h-screen w-full rounded-lg overflow-hidden relative"
+      className="h-screen w-full rounded-lg overflow-hidden relative px-10 md:px-4 lg:px-0"
     >
+  
       <Canvas
         camera={{ 
           position: [0, 0, 5],
@@ -55,6 +56,7 @@ const InteractiveCubeScene = () => {
   enablePan={true} // Sin paneo
         />
       </Canvas>
+    
     </div>
   )
 }

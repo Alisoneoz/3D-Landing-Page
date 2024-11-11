@@ -51,7 +51,7 @@ const CubeInteractive = () => {
     })
 
     return (
-        <group>
+        <group >
 
             <group ref={groupRef} scale={viewport.width / 6}>
                 <Float
